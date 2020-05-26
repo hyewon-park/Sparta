@@ -1,0 +1,90 @@
+<!DOCTYPE html> <!-- HTML로 웹을 작성하겠다는 명령문/기본구조1 -->
+<html lang="en">
+<!-- 이 HTML은 영어(en)로 작성하겠다는 명령문 -->
+
+<head>
+    <!-- 기본구조2 -->
+    <meta charset="UTF-8"> <!-- HTML에서 한글을 출력하기 위해 넣어야하는 태그 안넣으면 깨진댄다 출처: ouhn1의 블로그 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- △ 브라우저 페이지 자동크기 조정기능 중단명령 출처:https://blog.naver.com/soseoga/221069090317 -->
+    <!-- 뷰포트의 크기지정(content)를 디바이스의 가로길이에 맞추겠다는 명령(width=device-width) -->
+    <!-- initial-scale=내용의 확대or축소를 하겠다는 명령어로 0.0~10.0사이값 지정가능 1.0는 기본값 -->
+
+    <Title>1주차 숙제</Title>
+
+    <style>
+        .whole-border {
+            width: 698px;
+            height: 765px;
+            border: 2px solid black;
+            /* 16.포스팅박스 넣어보기 출처 */
+            padding: 20px 20px 0px 20px;
+        }
+
+        .image-border {
+            width: 500px;
+            height: 300px;
+            background-image: url('https://1.gall-img.com/hygall/files/attach/images/82/921/061/279/250befa9e009fe4b1483774cb45b1937.jpg');
+            background-position: center;
+            background-size: cover;
+            /* 출처:https://www.codingfactory.net/10559 */
+
+            border: 2px solid black;
+
+            margin: auto auto 30px auto;
+            width: 600px;
+        }
+
+        .button {
+            margin: 30px auto auto auto;
+            width: 100px;
+        }
+
+
+        /* 각종 테두리태그 출처 https://www.tabmode.com/homepage/border.html */
+    </style>
+
+    <script>
+        function order() {
+            alert('주문이 완료되었습니다');
+        }
+    </script>
+
+</head>
+
+<body>
+    <!-- 기본구조3 -->
+    <div class="whole-border">
+        <div class="image-border"></div>
+        <h1 style="display:inline;">상품 제목</h1>
+        &nbsp;&nbsp;&nbsp;<p style="display:inline;">가격: 1,000,000원 / 개</p>
+        <p>이 상품으로 말할 것 같으면 다하는데 7시간 걸렸는데 뭐가 문제인지 왜 이렇게 된건지 전혀 모르겠고 밑에 주문하기에 있는 라벨 길이들이랑 시작위치랑 버튼길이를 어떻게 맞추지요? 그리고 그림위치랑 텍스트위치 정렬하는데는 일일히 margin이랑 padding써서 px값을 감으로 때려넣는 방법밖에 없나요? 주문하기 버튼 위치랑 그림위치를 px위치값 때려넣기로 맞춰놔서 정말 찝찝합니다. 가운데정렬 기능없나요? 결론은 능이버섯 팝니다</p>
+        <h1>주문하기</h1>
+
+        <label for="customer-name">주문자 성함:</label>
+        <input type="text" id="customer-name">
+        <div>
+            <label for="Quantity">수량:</label>
+            <select>
+                <option selected></option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
+        </div>
+        <div>
+            <label for="address">주소:</label>
+            <input type="text" id="address">
+        </div>
+        <div>
+            <label for="phone-number">전화번호:</label>
+            <input type="text" id="phone-number">
+        </div>
+        <div class="button">
+            <button onclick="order()">주문하기</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
