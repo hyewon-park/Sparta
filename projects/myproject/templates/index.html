@@ -20,12 +20,68 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
+<script>
+      $(document).ready(function () { 
+      listing();
+      });
+
+      function listing() {
+      $.ajax({
+        type: "GET",
+        url: "/poem",
+        data: {},
+        success: function (response) {
+          let poems = response['all_poems']
+          
+          for (let i = 0; i < poems.length; i++) {
+            let body = poems[i]['body']
+            let poet = poems[i]['poet']
+            let book = poems[i]['book']
+
+            let temp_html = `<div class="row row-cols-1 row-cols-md-3">
+            <div class="col mb-4">
+            <div class="card h-100">
+            <div class="card-body">
+            <p class="card-title">${body}</p>
+            <p class="card-text">${book}</p>
+            <p class="card-title"> - ${poet}</p>
+            </div>
+            </div>
+            </div>
+            </div>`
+            $('#cards-box').append(temp_html);
+
+            }
+    }
+  })
+}
+
+
+function posting() {
+  $.ajax({
+    type: "POST",
+    url: "/poem",
+    data: {},
+    success: function (response) { // 성공하면
+    if (response['result'] == 'success') {
+      alert(response['msg']);
+      }
+      }
+      })
+      }
+
+</script>
+
 <title>시갈피</title>
 </head>
 
+
 <body>
 <h1>시갈피</h1>
-<div class="row row-cols-1 row-cols-md-3">
+<button onclick="posting()"type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false">
+  가져오기
+</button>
+  <div class="row row-cols-1 row-cols-md-3">
     <div class="col mb-4">
       <div class="card h-100">
         <div class="card-body">
@@ -35,6 +91,7 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
+<div id="cards-box"></div>
 </body>
 </html>
