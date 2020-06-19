@@ -11,8 +11,8 @@ def home():
     return render_template('index.html')
 
 ## API 역할을 하는 부분
-@app.route('/reviews', methods=['POST'])
-def write_review():
+@app.route('/save', methods=['POST'])
+def save():
     name_receive = request.form['name_give']
     howmany_receive = request.form['howmany_give']
     address_receive = request.form['address_give']
@@ -29,12 +29,12 @@ def write_review():
     return jsonify({'result':'success', 'msg': '주문이 성공적으로 신청되었습니다.'})
 
 
-@app.route('/reviews', methods=['GET'])
-def read_reviews():
+@app.route('/show', methods=['GET'])
+def show():
 
-    reviews = list(db.orders.find({},{'_id':0}))
+    orders = list(db.orders.find({},{'_id':0}))
 
-    return jsonify({'result':'success', 'all_review': reviews})
+    return jsonify({'result':'success', 'all_orders': orders})
 
 
 if __name__ == '__main__':

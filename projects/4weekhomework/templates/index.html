@@ -123,7 +123,7 @@
 
             $.ajax({
                 type: 'POST', // 타입을 작성합니다.
-                url: '/reviews', // url을 작성합니다.
+                url: '/save', // url을 작성합니다.
                 data: { name_give: name, howmany_give: howmany, address_give: address, phone_give: phone }, // data를 작성합니다. },
                 success: function (response) {
                     if (response['result'] == 'success') {
@@ -140,12 +140,12 @@
             // 3. 요청 성공했을 때 리뷰를 올바르게 화면에 나타내기
             $.ajax({
                 type: "GET",
-                url: "/reviews",
+                url: "/show",
                 data: {},
                 success: function (response) {
                     if (response['result'] == 'success') {
 
-                        let orders = response['all_review']
+                        let orders = response['all_orders']
                         for (let i = 0; i < orders.length; i++) {
                             let name = orders[i]['name']
                             let howmany = orders[i]['howmany']
@@ -161,9 +161,6 @@
                             
                             $('#orders-box').append(temp_html);
                         }
-
-                    } else {
-                        alert('리뷰를 받아오지 못했습니다');
                     }
                 }
             });
@@ -224,18 +221,12 @@
             <thead>
                 <tr>
                     <th scope="col">이름</th>
-                    <th scope="col">주소</th>
                     <th scope="col">수량</th>
+                    <th scope="col">주소</th>
                     <th scope="col">전화번호</th>
                 </tr>
             </thead>
             <tbody id="orders-box">
-                <tr>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                </tr>
             </tbody>
         </table>
     </div>
