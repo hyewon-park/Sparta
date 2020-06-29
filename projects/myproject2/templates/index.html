@@ -31,12 +31,12 @@
         url: "/poem",
         data: {},
         success: function (response) {
-          let sis = response['sis']
+          let poems = response['poems']
           
-          for (let i = 0; i < sis.length; i++) {
-            let body = sis[i]['body']
-            let poet = sis[i]['poet']
-            let book = sis[i]['book']
+          for (let i = 0; i < poems.length; i++) {
+            let body = poems[i]['body']
+            let poet = poems[i]['poet']
+            let book = poems[i]['book']
 
             let temp_html = `<div class="row row-cols-1 row-cols-md-3">
             <div class="col mb-4">

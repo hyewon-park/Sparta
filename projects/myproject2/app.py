@@ -39,30 +39,31 @@ def saving():
 
     account = "@S2_feeling"
 
-    sis = twitter_api.GetUserTimeline(screen_name=account, count=10, include_rts=True, exclude_replies=False)
+    poems = twitter_api.GetUserTimeline(screen_name=account, count=10, include_rts=True, exclude_replies=False)
 
 	# 2. data를 스크래핑하기
-    for si in sis:
+    for poem in poems:
         
-        resource_si = si.text
+        resource_poem = poem.text
         
-        body = resource_si.split(': ',1)[0].rstrip()
+        body = resource_poem.split(': ',1)[0].rstrip()
         
         try:
-             resource_poet = resource_si.split(': ',1)[1]
+             resource_poet = resource_poem.split(': ',1)[1]
              poet = resource_poet.split(', ',1)[0]
              book = resource_poet.split(', ',1)[1]
              print(body,poet,book)
         
-        except:pass
+        except:
+            pass
             
         doc = {
                 'body' : body,
                 'poet' : poet,
                 'book' : book
                 }
-        
-        db.sis.insert_one(doc) # 3. mongoDB에 데이터 넣기
+                
+        db.poems.insert_one(doc) # 3. mongoDB에 데이터 넣기
 
     return jsonify({'result': 'success', 'msg':'시를 읽어왔습니다'})
 
