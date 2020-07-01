@@ -21,9 +21,22 @@
         crossorigin="anonymous"></script>
 
 <script>
-      $(document).ready(function () { 
+
+
+function posting() {
+  $.ajax({
+    type: "POST",
+    url: "/poem",
+    data: {},
+    success: function (response) { // 성공하면
+    if (response['result'] == 'success') {
+      alert(response['msg']);
       listing();
-      });
+      }
+      }
+      })
+    
+      }
 
       function listing() {
       $.ajax({
@@ -55,20 +68,6 @@
     }
   })
 }
-
-
-function posting() {
-  $.ajax({
-    type: "POST",
-    url: "/poem",
-    data: {},
-    success: function (response) { // 성공하면
-    if (response['result'] == 'success') {
-      alert(response['msg']);
-      }
-      }
-      })
-      }
 
 </script>
 
